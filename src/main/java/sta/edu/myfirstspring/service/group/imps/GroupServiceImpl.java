@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sta.edu.myfirstspring.dao.group.impls.DaoGroupImpl;
 import sta.edu.myfirstspring.model.Group;
+import sta.edu.myfirstspring.repository.GroupRepository;
 import sta.edu.myfirstspring.service.group.interfaces.IGroupService;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class GroupServiceImpl implements IGroupService {
     DaoGroupImpl daoGroup;
 
     @Override
-    public Group create(Group Group) {
+    public Group create(Group cafedra) {
         return null;
     }
 
@@ -26,17 +27,18 @@ public class GroupServiceImpl implements IGroupService {
     }
 
     @Override
+    public Group update(Group cafedra) {
+        return null;
+    }
+
+    @Override
     public Group delete(String id) {
         return null;
     }
 
     @Override
-    public Group update(Group Group) {
-        return null;
-    }
-
-    @Override
-    public List<Group> getAll() {
+    public List getAll() {
         return daoGroup.getAll();
     }
+
 }

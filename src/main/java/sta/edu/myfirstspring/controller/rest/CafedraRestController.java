@@ -3,38 +3,39 @@ package sta.edu.myfirstspring.controller.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sta.edu.myfirstspring.model.Cafedra;
-import sta.edu.myfirstspring.service.implementation.CafedraServiceImpl;
+import sta.edu.myfirstspring.service.cafedra.impls.CafedraServiceImpl;
 
 import java.util.List;
 
 @RequestMapping("/api/cafedra")
-
 @RestController
-
 public class CafedraRestController {
 
+    public CafedraRestController(CafedraServiceImpl cafedraServiceImpl) {
+        this.cafedraServiceImpl = cafedraServiceImpl;
+    }
+
     @Autowired
-    CafedraServiceImpl service; // можем использовать
+    CafedraServiceImpl cafedraServiceImpl;
 
+    @RequestMapping("")
+    String getIndex(){
+        return "<h1>Index Web Controller</h1>";
+    }
 
-    @GetMapping("/Hello")
-    String getHello (){
-        return "hello form Cafedra controller";
+    @GetMapping("/hello")
+    String getHello() {
+        return "<h1>Hello from Cafedra Controller</h1>";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    List<Cafedra> getCafedras(){
-        return service.getAll();
+    List getCafedrasList() {
+        return cafedraServiceImpl.getAll();
     }
-
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-
-
-    Cafedra getCafedraList(@PathVariable("id") String id){
-        return service.get(id);
+    Cafedra getCafedra(@PathVariable("id") String id) {
+        return cafedraServiceImpl.get(id);
     }
-
-
 
 }

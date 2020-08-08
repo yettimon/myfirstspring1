@@ -5,7 +5,5 @@ import org.springframework.stereotype.Repository;
 import sta.edu.myfirstspring.model.Cafedra;
 import sta.edu.myfirstspring.model.Group;
 
-@Repository
-
 public interface GroupRepository extends MongoRepository<Group,String> {
 }

@@ -12,15 +12,13 @@ import java.util.List;
 
 @RequestMapping("api/group")
 @RestController
-
 public class GroupRestController {
 
     @Autowired
     GroupServiceImpl groupService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    List<Group> getGroups (){
+    @RequestMapping(value = "/list", method= RequestMethod.GET)
+    List<Group> getGroups(){
         return groupService.getAll();
     }
-
 }
