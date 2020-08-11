@@ -2,6 +2,7 @@ package sta.edu.myfirstspring.service.cafedra.impls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sta.edu.myfirstspring.datastorage.DataFake;
 import sta.edu.myfirstspring.model.Cafedra;
 import sta.edu.myfirstspring.repository.CafedraRepository;
 import sta.edu.myfirstspring.service.cafedra.interfaces.ICafedraService;
@@ -18,9 +19,13 @@ public class CafedraServiceImpl implements ICafedraService {
     @Autowired
     CafedraRepository cafedraRepository;
 
+    @Autowired
+    DataFake dataFake;
+
     @Override
     public Cafedra create(Cafedra cafedra) {
         cafedra.setCreateAt(LocalDateTime.now());
+        cafedra.setUpdateAt(LocalDateTime.now());
         return cafedraRepository.save(cafedra);
     }
 
@@ -46,4 +51,9 @@ public class CafedraServiceImpl implements ICafedraService {
     public List getAll() {
         return cafedraRepository.findAll();
     }
+
+    public void refreshDatabase(){
+        dataFake.init();
+    }
+
 }

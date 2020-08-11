@@ -33,8 +33,8 @@ public class DataFake {
             new Cafedra("IT", "Pshek", "VoitiVIT")
     ));
 
-    @PostConstruct
-    private void init(){
+    //@PostConstruct
+    public void init(){
         cafedraRepository.deleteAll();
         cafedraRepository.saveAll(cafedras);
         groupRepository.deleteAll();
@@ -58,8 +58,11 @@ public class DataFake {
     public List<Cafedra> getCafedras(){
         return cafedras;
     }
+
     public void setCafedras(List<Cafedra> cafedras){
         this.cafedras = cafedras;
     }
+
+
 }
 
